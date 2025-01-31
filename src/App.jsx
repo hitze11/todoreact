@@ -1,39 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import TodoList from './components/TodoList';
-import TodoForm from './components/TodoForm';
-import useTodoStore from './store/useTodoStore';
+// src/App.jsx
+import React, { useState } from "react";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 
 const App = () => {
-  const { todos, addTodo, deleteTodo, toggleTodo } = useTodoStore();
-  const [filter, setFilter] = useState('all');
+  const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem('todos'));
-    if (storedTodos) {
-      storedTodos.forEach(todo => addTodo(todo.text));
-    }
-  }, [addTodo]);
+  const addTodo = (text) => {
+    const newTodo = { id: Date.now(), text, completed: false };
+    setTodos([...todos, newTodo]);
+  };
 
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
-  const filteredTodos = todos.filter(todo => {
-    if (filter === 'completed') return todo.completed;
-    if (filter === 'active') return !todo.completed;
-    return true;
-  });
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
 
   return (
     <div>
       <h1>Todo App</h1>
-      <TodoForm addTodo={addTodo} />
-      <div>
-        <button onClick={() => setFilter('all')}>Alle</button>
-        <button onClick={() => setFilter('active')}>Offene</button>
-        <button onClick={() => setFilter('completed')}>Erledigte</button>
-      </div>
-      <TodoList todos={filteredTodos} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
+      <TodoForm onAdd={addTodo} />
+      <TodoList todos={todos} onDelete={deleteTodo} onToggle={toggleTodo} />
     </div>
   );
 };

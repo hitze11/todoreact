@@ -1,20 +1,11 @@
+// src/components/TodoItem.jsx
 import React from "react";
 
-const TodoItem = ({ todo, deleteTodo, toggleTodo }) => {
+const TodoItem = ({ todo, onDelete, onToggle }) => {
   return (
-    <li
-      style={{ textDecoration: todo.completed ? "line-through" : "none" }}
-      onClick={() => toggleTodo(todo.id)}
-    >
-      {todo.text}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          deleteTodo(todo.id);
-        }}
-      >
-        Delete
-      </button>
+    <li style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
+      <span onClick={() => onToggle(todo.id)}>{todo.text}</span>
+      <button onClick={() => onDelete(todo.id)}>Delete</button>
     </li>
   );
 };

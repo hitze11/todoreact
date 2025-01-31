@@ -1,12 +1,13 @@
+// src/components/TodoForm.jsx
 import React, { useState } from "react";
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = ({ onAdd }) => {
   const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
-      addTodo(input);
+      onAdd(input);
       setInput("");
     }
   };
@@ -17,7 +18,7 @@ const TodoForm = ({ addTodo }) => {
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Neues Todo hinzufügen"
+        placeholder="Add a new todo"
       />
       <button type="submit">Add Todo</button>
     </form>
