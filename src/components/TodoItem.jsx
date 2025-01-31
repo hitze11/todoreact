@@ -1,4 +1,3 @@
-// src/components/TodoItem.jsx
 import React from "react";
 
 const TodoItem = ({ todo, onDelete, onToggle }) => {
