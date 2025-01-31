@@ -2,9 +2,10 @@ import React from "react";
 
 const TodoItem = ({ todo, onDelete, onToggle }) => {
   return (
-    <li style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
+    <li className=" flex flex-grid justify-between items-center p-2"
+      style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
       <span onClick={() => onToggle(todo.id)}>{todo.text}</span>
-      <button onClick={() => onDelete(todo.id)}>Delete</button>
+      <button onClick={() => onDelete(todo.id)}>entfernen</button>
     </li>
   );
 };
