@@ -21,8 +21,8 @@ const TodoForm = ({ onAdd }) => {
         placeholder="Neue Aufgabe"
       />
       <button
-        className="bg-black text-green-500 py-2 px-6 rounded-md shadow-[0_4px_10px_rgba(255,255,0,0.7)] hover:bg-gray-800 transition duration-200"
         type="submit"
+        className="bg-black text-green-500 py-2 px-6 rounded-md shadow-[0_4px_10px_rgba(255,255,0,0.7)] hover:bg-yellow-500 transition duration-200 border-green-600"
       >
         Hinzufügen
       </button>

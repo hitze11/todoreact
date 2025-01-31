@@ -23,11 +23,11 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen min-w-screen flex justify-center items-center bg-green-500 border-4 border-black ">
-      <div className="w-full max-w-4xl bg-black p-8 rounded-xl shadow-[0_40px_80px_rgba(255,255,0,0.5)]">
-        <h1 className="flex flex-col mx-auto text-3xl font-bold text-center text-green-600 mb-6  shadow-[0_4px_10px_rgba(255,255,0,0.7)]">
-          Todo App
-        </h1>
+    <div className="min-h-screen min-w-screen flex justify-center items-center bg-green-500">
+      <div className=" bg-black p-8 rounded-xl shadow-[0_40px_80px_rgba(255,255,0,0.5)] border-4 border-black w-auto">
+        <div className="flex flex-col mx-auto text-3xl font-bold text-center text-green-600 mb-6 shadow-[0_4px_10px_rgba(255,255,0,0.7)]">
+          <h1>Todo App</h1>
+        </div>
         <TodoForm onAdd={addTodo} />
         <TodoList todos={todos} onDelete={deleteTodo} onToggle={toggleTodo} />
       </div>
